@@ -15,6 +15,9 @@ app.use(express.json());
 // SECTION View Routes
 app.use('/', routes.views);
 
+// SECTION API Endpoint Routes
+app.use('/api/v1', routes.api);
+
 app.listen(PORT, () => {
     console.log(`Application is listening on ${PORT}..`);
 });
