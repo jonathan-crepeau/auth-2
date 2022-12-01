@@ -10,7 +10,28 @@ const root = (req, res) => {
     });
 };
 
+const login = (req, res) => {
+    res.sendFile('/views/login.html', {
+        root: ROOT
+    });
+};
+
+const profile = (req, res) => {
+    res.sendFile('/views/profile.html', {
+        root: ROOT
+    });
+};
+
+const signup = (req, res) => {
+    res.sendFile('/views/signup.html', {
+        root: ROOT
+    });
+};
+
 module.exports = {
     test,
-    root
+    root,
+    login,
+    profile,
+    signup
 }
