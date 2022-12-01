@@ -18,6 +18,7 @@ app.use('/', routes.views);
 // SECTION API Endpoint Routes
 app.use('/api/v1', routes.api);
 
+// Start Server
 app.listen(PORT, () => {
     console.log(`Application is listening on ${PORT}..`);
 });

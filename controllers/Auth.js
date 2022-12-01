@@ -1,3 +1,4 @@
+const db = require('../models');
 
 // Test Controller
 const test = (req, res) => {
