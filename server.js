@@ -2,9 +2,13 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4002;
 
-app.get('/', (req, res) => {
-    res.send('<h1>Auth App 2</h1>');
-});
+const routes = require('./routes');
+
+// Serve Static
+app.use(express.static(`${__dirname}/public`));
+
+// SECTION View Routes
+app.use('/', routes.views);
 
 app.listen(PORT, () => {
     console.log(`Application is listening on ${PORT}..`);
