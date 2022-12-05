@@ -1,1 +1,25 @@
-body { background:lightsalmon }
+
+
+body { 
+    background:lightsalmon;
+    height: 100vh;
+}
+
+#form-container {
+    border: white dotted 2px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#signup-form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* input {
+    display: block;
+} */

@@ -45,7 +45,20 @@ const signup = (req, res) => {
     });
 };
 
+const trySignup = (req, res) => {
+    const { firstName, lastName, email, password } = req.body;
+    const newUser = {
+        firstName,
+        lastName,
+        email,
+        password
+    };
+    res.json(newUser);
+}
+
 
 module.exports = {
-    test
+    test,
+    signup,
+    trySignup
 }
