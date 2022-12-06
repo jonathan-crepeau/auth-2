@@ -20,7 +20,7 @@ const handleSubmitClick = (event) => {
         userData[input.name] = input.value;
     })
 
-    fetch('http://localhost:4002/api/v1/try', {
+    fetch('http://localhost:4002/api/v1/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
