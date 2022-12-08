@@ -6,12 +6,15 @@ const PORT = process.env.PORT || 4002;
 
 const routes = require('./routes');
 const logger = require('./middleware/utils');
+// const cookieLogger = require('./middleware/cookieLogger');
+
 
 // Serve Static
 app.use(express.static(`${__dirname}/public`));
 
 // SECTION Middleware
 app.use(logger);
+// app.use(cookieLogger)
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 

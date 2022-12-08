@@ -5,7 +5,7 @@ const logger = (req, res, next) => {
     const requestedAt = new Date().toLocaleString();
     const result = `${method} --> ${host} --> ${url} --> ${requestedAt}`;
     console.log(result);
-    next()
+    next();
 };
 
 module.exports = logger;
