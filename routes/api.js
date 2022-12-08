@@ -11,4 +11,7 @@ router.post('/signup', ctrl.Auth.signup);
 // Login - Create Session
 router.post('/login', ctrl.Auth.createSession);
 
+// Destroy - Delete Session
+router.delete('/logout', ctrl.Auth.deleteSession);
+
 module.exports = router;
