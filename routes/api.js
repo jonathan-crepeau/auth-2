@@ -8,7 +8,7 @@ router.get('/test', ctrl.Auth.test);
 // Signup Route
 router.post('/signup', ctrl.Auth.signup);
 
-// trySignup route
-router.post('/try', ctrl.Auth.trySignup);
+// Login - Create Session
+router.post('/login', ctrl.Auth.createSession);
 
 module.exports = router;

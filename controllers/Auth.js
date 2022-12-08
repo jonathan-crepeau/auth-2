@@ -45,20 +45,55 @@ const signup = (req, res) => {
     });
 };
 
-const trySignup = (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
-    const newUser = {
-        firstName,
-        lastName,
-        email,
-        password
-    };
-    res.json(newUser);
-}
+// POST Login - Create Session
+const createSession = (req, res) => {
+    console.log(req.body);
+    if (!req.body.email || !req.body.password) { 
+        return res.status(400).json({
+            status: 400,
+            errors: [{message: "Please enter your email and password."}]
+        });
+    }
+
+    db.User.findOne({email: req.body.email}, (err, foundUser) => {
+        if (err) return res.status(500).json({
+            status: 500,
+            errors: [{message: "Something went wrong, please try again."}]
+        });
+
+        if (!foundUser) {
+            return res.status(400).json({
+                status: 400,
+                errors: [{message: "Username or password is incorrect, account not found."}]
+            });
+        }
+
+        bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
+            if (err) return res.status(500).json({
+                status: 500,
+                errors: [{message: "Something went wrong, please try again."}]
+            });
+
+            if (isMatch) {
+                req.session.loggedIn = true;
+                req.session.currentUser = foundUser._id;
+                return res.status(200).json({
+                    status: 200,
+                    data: {id: foundUser._id}
+                });
+            } else {
+                return res.json({
+                    status: 400,
+                    errors: [{message: "Username or password is incorrect, plesae try again."}]
+                });
+            }
+        });
+    });
+};
 
 
 module.exports = {
     test,
     signup,
-    trySignup
+    createSession
 }
