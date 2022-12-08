@@ -14,4 +14,7 @@ router.post('/login', ctrl.Auth.createSession);
 // Destroy - Delete Session
 router.delete('/logout', ctrl.Auth.deleteSession);
 
+// GET - Verify
+router.get('/verify', ctrl.Auth.verify);
+
 module.exports = router;

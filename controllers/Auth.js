@@ -103,9 +103,22 @@ const deleteSession = (req, res) => {
     });
 };
 
+const verify = (req, res) => {
+    if (req.session.currentUser) {
+        return res.json({
+            message: "Authorized",
+            userId: req.session.currentUser
+        });
+    }
+    res.status(401).json({message: "You are not authenticated."});
+}
+
+
+
 module.exports = {
     test,
     signup,
     createSession,
-    deleteSession
+    deleteSession,
+    verify
 }
