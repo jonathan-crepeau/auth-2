@@ -38,7 +38,10 @@ const signup = (req, res) => {
 
                 db.User.create(newUser, (err, createdUser) => {
                     if (err) return res.status(400).json({message:"Bad request, please try again."});
-                    res.status(201).json(createdUser);
+                    res.status(201).json({
+                        status: 201,
+                        createdUser
+                    })
                 });
             });
         });
@@ -110,7 +113,11 @@ const verify = (req, res) => {
             userId: req.session.currentUser
         });
     }
-    res.status(401).json({message: "You are not authenticated."});
+    res.status(401)
+    .json({
+        status: 401,
+        message: "You are not authenticated."
+    });
 }
 
 

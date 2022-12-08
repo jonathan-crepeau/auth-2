@@ -28,7 +28,12 @@ const handleSubmitClick = (event) => {
         body: JSON.stringify(userData)
     })
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            if (data.status === 201) {
+                window.location = '/login'
+            }
+            console.log(data)
+        })
         .catch((error) => console.log(error));
 
 
